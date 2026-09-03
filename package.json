@@ -1,0 +1,24 @@
+{
+  "name": "work-iq-demo-console",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,blue \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w backend && npm run build -w frontend",
+    "typecheck": "npm run typecheck -w backend && npm run typecheck -w frontend",
+    "test": "npm run test -w backend",
+    "workiq:accept-eula": "npx -y @microsoft/workiq@1.0.0 accept-eula",
+    "workiq:login": "npx -y @microsoft/workiq@1.0.0 auth login",
+    "workiq:config": "npx -y @microsoft/workiq@1.0.0 config show",
+    "workiq:test": "npx -y @microsoft/workiq@1.0.0 ask -q \"What meetings do I have today?\"",
+    "start": "npm run start -w backend"
+  },
+  "devDependencies": {
+    "@fluentui/react-icons": "^2.0.337",
+    "concurrently": "^9.2.1"
+  }
+}
